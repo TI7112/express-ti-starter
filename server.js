@@ -5,6 +5,7 @@ const logger = require('morgan');
 const session = require('express-session')
 const flash = require('connect-flash');
 const connectMongoose = require('./config/db')
+const cors = require('cors')
 
 const indexRouter = require('./routes/indexRoute');
 const userRouter = require('./routes/userRoute');
@@ -16,6 +17,7 @@ const app = express();
 connectMongoose()
 
 app.use(flash());
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
